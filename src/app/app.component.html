@@ -1,2 +1,14 @@
-<h2>Bonjour le monde</h2>
-<app-produit></app-produit>
+<!--<h2>Bonjour le monde</h2>-->
+<div class="row body">
+  <div class="col-lg-2" *ngIf="showHideSideBar">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-lg-10">
+    <!--<button (click)="showHideSideBar = !showHideSideBar;">Show/Hide</button>-->
+    <app-navbar
+    [showSideBar] = "showHideSideBar"
+    (showSideBarChange)="onShowSideBarChange($event)"
+    ></app-navbar>
+    <app-content></app-content>
+  </div>
+</div>
