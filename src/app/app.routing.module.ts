@@ -29,14 +29,14 @@ export const appRoutes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        resolve: {
-          users: UserResolver
-        },
         outlet: 'contentOutlet'
       },
       {
         path: 'user',
         component: UserComponent,
+        resolve: {
+          users: UserResolver
+        },
         outlet: 'contentOutlet'
       }
     ]
@@ -46,7 +46,7 @@ export const appRoutes: Routes = [
     redirectTo: '/home',
     pathMatch: 'full'
   }
-]
+];
 
 @NgModule({
   imports: [
