@@ -35,4 +35,8 @@ export class ProduitMockService implements CrudService{
     return of('success');
   }
 
+  addAll(list): Observable<any> {
+    return of('success');
+  }
+
 }
