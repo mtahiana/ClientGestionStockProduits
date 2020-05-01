@@ -16,27 +16,28 @@ export const appRoutes: Routes = [
      children: [
       {
         path: '', component: ProductComponent,
-        outlet: 'homeOutlet',
         resolve: {
           products: ProductResolver
         }
       },
-     ]
-  },
 
-  {
-    path: 'product', component: ProductComponent,
-    resolve: {
-      products: ProductResolver
-    }
-  },
+      {
+        path: 'product', component: ProductComponent,
+        resolve: {
+          products: ProductResolver
+        }
+      },
 
-  { path: 'dashboard',  component: DashboardComponent },
-  { path: 'user', component: UserComponent,
-    resolve: {
-      users: UserResolver
-    }
+      { path: 'dashboard',  component: DashboardComponent },
+      { path: 'user', component: UserComponent,
+        resolve: {
+          users: UserResolver
+        }
+      }
+
+    ]
   }
+
 ];
 
 @NgModule({
