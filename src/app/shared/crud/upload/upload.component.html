@@ -2,10 +2,6 @@
   <input type="file"  id="customFile" #fileUploadInput (change)="selectFile($event)" accept=".csv">
   <label class="custom-file-label" for="customFile">{{fileName ? fileName : 'Choisissez un fichier!'}}</label>
 </div>
-<!--<div>
-  {{logObject | json}}
-</div>-->
-
 <div class="checkout-wrap">
   <ul class="checkout-bar">
     <li [ngClass]="{active: currentStep == 1, visited: currentStep>1}" (click)="selectedStep=1;">Importer un fichier</li>
@@ -30,16 +26,16 @@
       </table>
     </div>
     <div *ngIf="!dataArray">
-      <p>Aucune donnee importee.</p>
+      <p>Aucune donnée importée.</p>
     </div>
   </div>
   <div *ngSwitchCase="2">
     <div *ngIf="!dataSentToServer">
-      <p>Cliquer pour envoyer les donnees au serveur</p>
+      <p>Cliquez pour envoyer les données au serveur !</p>
       <button class="btn btn-default" (click)="sendDataToServer()">Send</button>
     </div>
     <div *ngIf="dataSentToServer">
-      <p>L'envoi est termine.</p>
+      <p>L'envoie est terminé.</p>
     </div>
   </div>
   <div *ngSwitchCase="3">
@@ -58,7 +54,7 @@
       </table>
     </div>
     <div *ngIf="!dataFromServer">
-      <p>Aucune donnee recuperee.</p>
+      <p>Aucune donnée récupérée.</p>
     </div>
   </div>
 </div>

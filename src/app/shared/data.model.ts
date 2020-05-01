@@ -1,5 +1,5 @@
 
-export class DataModel{
+export class DataModel {
   constructor(public columnName?: string,
               public columnReference?: string,
               public dataType?: string,

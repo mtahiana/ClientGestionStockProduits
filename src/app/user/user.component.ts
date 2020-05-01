@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
-import { UserService } from './user.service';
-import { User } from '../shared/user.model';
-import {DataModel} from '../shared/data.model';
+import { User } from './shared/model/user.model';
+import { DataModel } from '../shared/data.model';
+import { UserService } from './shared/service/user.service';
 
 @Component({
   selector: 'app-user',
@@ -19,9 +19,10 @@ export class UserComponent implements OnInit {
 
   usersModel: DataModel[];
 
-  userForm: FormGroup; 
+  userForm: FormGroup;
 
-  constructor(private userService: UserService, private fb: FormBuilder, private route: ActivatedRoute) { }
+
+  constructor(public userService: UserService, private route: ActivatedRoute, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.users = this.route.snapshot.data.users;
@@ -31,9 +32,10 @@ export class UserComponent implements OnInit {
     });
 
     this.usersModel = [
-      new DataModel('id', 'ID', 'number', true, []),
-      new DataModel('username', 'Nom d\'utilisateur', 'string', false, []),
-      new DataModel('enable', 'Actif', 'boolean', true, [])
+      new DataModel('id','ID','number',true,[]),
+      new DataModel('username','Nom d\'utilisateur','string',false,[]),
+      new DataModel('enable','Actif','number',true,[])
     ]
   }
+
 }

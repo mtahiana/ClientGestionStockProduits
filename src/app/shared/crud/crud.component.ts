@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators} from '@angular/forms';
 
 import { CrudService } from '../crud.service';
 import { DataModel } from '../data.model';

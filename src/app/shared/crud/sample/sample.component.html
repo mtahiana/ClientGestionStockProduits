@@ -33,31 +33,30 @@
             <div *ngFor="let dataModel of dataModelList" [ngSwitch]="dataModel.dataType">
               <div class="form-group" *ngIf="!dataModel.readonly">
                 <label>{{dataModel.columnReference}}:</label>
-                <input *ngSwitchCase="'string'" type="text" class="form-control" formControlName="{{dataModel.columnName}}"
-                  [(ngModel)]="selectedItem[dataModel.columnName]" />
+                <input *ngSwitchCase="'string'"  type="text" class="form-control" formControlName="{{dataModel.columnName}}"
+                  [(ngModel)]="selectedItem[dataModel.columnName]"/>
                 <input *ngSwitchCase="'number'" type="number" class="form-control" formControlName="{{dataModel.columnName}}"
-                  [(ngModel)]="selectedItem[dataModel.columnName]" />
+                  [(ngModel)]="selectedItem[dataModel.columnName]"/>
               </div>
-              <!--
-              <div class="alert alert-danger" *ngIf="produitForm.controls['ref'].invalid &&
-                                      (produitForm.controls['ref'].touched || produitForm.controls['ref'].dirty)">
-                Reference est obligatoire!
-              </div>
-              -->
+              <!-- <div class="alert alert-danger" *ngIf="produitForm.controls['ref'].invalid &&
+                                          (produitForm.controls['ref'].touched || produitForm.controls['ref'].dirty)">
+                  Référence est obligatoire!
+              </div> -->
             </div>
 
             <button class="btn btn-success" [disabled]="crudForm.prestine || crudForm.invalid"
             (click)="operation == 'add' ? add() : update()">
-              {{ operation == 'add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : '' }}
+                {{ operation == 'add' ? 'Ajouter' : operation == 'edit' ? 'Modifier' : ''}}
             </button>
           </form>
+
         </div>
         <div *ngIf="operation == 'remove'">
           <p class="card-title">
-            Reference: {{selectedItem.id}}
+            Référence: {{selectedItem.id}}
           </p>
           <p>
-            Voulez-vous supprimer cet element?
+            Voulez-vous supprimer cet élément?
           </p>
           <button class="btn btn-success" [disabled]="!selectedItem.id" (click)="delete()">Confirmer</button>
         </div>

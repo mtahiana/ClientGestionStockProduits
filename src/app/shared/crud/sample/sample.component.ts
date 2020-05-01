@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
 import { CrudService } from '../../crud.service';
 import { DataModel } from '../../data.model';
@@ -41,7 +41,6 @@ export class SampleComponent implements OnInit {
 
   ngOnInit(){
     this.init();
-    this.loadData();
   }
 
   createForm(){
@@ -51,8 +50,8 @@ export class SampleComponent implements OnInit {
   loadData(){
     this.service.getAll().subscribe(
       data => {this.data = data},
-      error => {console.log('An error was occured.')},
-      () => {console.log('loading data was done.')}
+      error => { console.log('An error was occured.')},
+      () => { console.log('loading data was done.')}
     );
   }
 
@@ -82,13 +81,12 @@ export class SampleComponent implements OnInit {
   }
 
   delete(){
-    this.service.delete(this.selectedItem.id)
-    .subscribe(
-      res => {
+    this.service.delete(this.selectedItem.id).
+    subscribe(
+      res =>{
         this.selectedItem = this.initItem;
         this.loadData();
       }
     );
   }
-
 }

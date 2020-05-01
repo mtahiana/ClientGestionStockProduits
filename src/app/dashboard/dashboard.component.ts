@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProduitService } from '../produit/produit.service'
-import { UserService } from '../user/user.service'
+import { ProductService } from '../product/shared/service/product.service';
+import { UserService } from '../user/shared/service/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +9,7 @@ import { UserService } from '../user/user.service'
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
-  produitsData = {
+  productsData = {
     labels: [],
     datasets: []
   };
@@ -20,11 +19,11 @@ export class DashboardComponent implements OnInit {
     datasets: []
   };
 
-  constructor(private produitService: ProduitService, private userService: UserService) { }
+  constructor(private productService: ProductService, private userService: UserService) { }
 
   ngOnInit() {
     const datasetsQuantite = {
-      label: "Quantite",
+      label: "Quantité",
       data: [],
       backgroundColor: 'rgba(255, 200, 85, 0.2)',
       borderColor: 'rgb(255, 99, 132)'
@@ -37,14 +36,14 @@ export class DashboardComponent implements OnInit {
       borderColor: 'rgb(255, 99, 132)'
     };
 
-    this.produitService.getAll().subscribe(liste => liste.forEach(produit => {
-      this.produitsData.labels.push(produit.ref);
-      datasetsQuantite.data.push(produit.quantite);
-      datasetsPrixUnitaire.data.push(produit.prixUnitaire);
+    this.productService.getAll().subscribe(list=> list.forEach(product => {
+      this.productsData.labels.push(product.ref);
+      datasetsQuantite.data.push(product.quantite);
+      datasetsPrixUnitaire.data.push(product.prixUnitaire);
     }));
 
-    this.produitsData.datasets.push(datasetsQuantite);
-    this.produitsData.datasets.push(datasetsPrixUnitaire);
+    this.productsData.datasets.push(datasetsQuantite);
+    this.productsData.datasets.push(datasetsPrixUnitaire);
 
     const datasetsUser = {
       label: "Roles",
@@ -55,20 +54,16 @@ export class DashboardComponent implements OnInit {
 
     this.usersData.datasets.push(datasetsUser);
 
-    this.usersData.labels.push("ROLE_ADMIN");
-    this.usersData.labels.push("ROLE_USER");
-
-    /*this.userService.getAll().subscribe(liste => liste.forEach(user => {
-        datasetsUser.data.push(user.roles.length);
-    }));*/
+    this.usersData.labels.push('ROLE_ADMIN');
+    this.usersData.labels.push('ROLE_USER');
 
     this.userService.getAll().subscribe(list => {
       let adminLength = 0;
 
       list.forEach(user => user.roles.forEach(role => {
         if(role.name == 'ROLE_ADMIN'){
-          adminLength++;
-        }
+        adminLength++;
+      }
       }));
 
       datasetsUser.data.push(adminLength);
@@ -76,8 +71,8 @@ export class DashboardComponent implements OnInit {
       let userLength = 0;
       list.forEach(user => user.roles.forEach(role => {
         if(role.name == 'ROLE_USER'){
-          userLength++;
-        }
+        userLength++;
+      }
       }));
 
       datasetsUser.data.push(userLength);
