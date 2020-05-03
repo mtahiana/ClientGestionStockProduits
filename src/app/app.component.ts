@@ -9,7 +9,7 @@ import { AppService } from './authentication/shared/service/app.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  showHideSideBar: boolean = false;
+  //showHideSideBar: boolean = false;
 
   constructor(private appService: AppService,
               private router: Router){}
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit{
     }
   }
 
-  onShowSideBarChange(showHideSideBar){
+  /*onShowSideBarChange(showHideSideBar){
     this.showHideSideBar = showHideSideBar;
-  }
+  }*/
 
 }
